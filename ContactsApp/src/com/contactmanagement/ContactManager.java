@@ -31,4 +31,16 @@ public class ContactManager {
 
         return null;
     }
+    
+    // edit contact
+    public void replaceContact(String username, Contact oldContact, Contact newContact) {
+
+        List<Contact> contacts = userContacts.get(username);
+
+        int index = contacts.indexOf(oldContact);
+
+        if (index != -1) {
+            contacts.set(index, newContact);
+        }
+    }
 }

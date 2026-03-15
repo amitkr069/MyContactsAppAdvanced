@@ -36,8 +36,9 @@ public class MyContactsApp {
             	System.out.println("1. Profile Management");
             	System.out.println("2. Create Contact");
             	System.out.println("3. View Contact");
-            	System.out.println("4. Logout");
-            	System.out.println("5. Exit");
+            	System.out.println("4. Edit Contact");
+            	System.out.println("5. Logout");
+            	System.out.println("6. Exit");
             }
 
             System.out.print("Enter choice: ");
@@ -63,8 +64,9 @@ public class MyContactsApp {
                     case 1 -> profileManagement();
                     case 2 -> createContact();
                     case 3 -> ViewContact.viewContact();
-                    case 4 -> logout();
-                    case 5 -> {
+                    case 4 -> EditContact.editContact();
+                    case 5 -> logout();
+                    case 6 -> {
                         System.out.println("Exiting application...");
                         return;
                     }

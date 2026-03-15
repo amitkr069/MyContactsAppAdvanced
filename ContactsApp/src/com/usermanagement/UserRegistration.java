@@ -9,7 +9,7 @@ public class UserRegistration {
         }
 
         if (!ValidationUtil.isValidEmail(email)) {
-            throw new IllegalArgumentException("Invalid Email Format");
+            throw new IllegalArgumentException("Invalid Email");
         }
 
         if (!ValidationUtil.isValidPassword(password)) {
@@ -24,6 +24,8 @@ public class UserRegistration {
                 .setEmail(email)
                 .setPassword(hashedPassword)
                 .build(type);
+
+        UserStore.users.put(username, user);
 
         return user;
     }

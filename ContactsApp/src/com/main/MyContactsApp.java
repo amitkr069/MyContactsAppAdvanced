@@ -1,3 +1,10 @@
+/**
+ * @author Amit
+ * @Version 3.0
+ * 
+ * This use case contains user profile management
+ * it has update name, update email, update password
+ */
 package com.main;
 
 import com.usermanagement.*;
@@ -14,34 +21,49 @@ public class MyContactsApp {
         while (true) {
 
             System.out.println("\n===== MyContacts App =====");
-            System.out.println("1. Register");
-            System.out.println("2. Login (Basic - Username)");
-            System.out.println("3. Login (Open - Email)");
-            System.out.println("4. Exit");
+
+            if (SessionManager.getInstance().getCurrentUser() == null) {
+
+                System.out.println("1. Register");
+                System.out.println("2. Login (Basic)");
+                System.out.println("3. Login (Open)");
+                System.out.println("4. Exit");
+
+            } else {
+
+                System.out.println("1. Profile Management");
+                System.out.println("2. Logout");
+                System.out.println("3. Exit");
+            }
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
 
-            switch (choice) {
-                case 1:
-                    registerUser();
-                    break;
+            if (SessionManager.getInstance().getCurrentUser() == null) {
 
-                case 2:
-                    basicLogin();
-                    break;
+                switch (choice) {
+                    case 1 -> registerUser();
+                    case 2 -> basicLogin();
+                    case 3 -> openLogin();
+                    case 4 -> {
+                        System.out.println("Exiting application...");
+                        return;
+                    }
+                    default -> System.out.println("Invalid choice!");
+                }
 
-                case 3:
-                    openLogin();
-                    break;
+            } else {
 
-                case 4:
-                    System.out.println("Exiting application...");
-                    return;
-
-                default:
-                    System.out.println("Invalid choice!");
+                switch (choice) {
+                    case 1 -> profileManagement();
+                    case 2 -> logout();
+                    case 3 -> {
+                        System.out.println("Exiting application...");
+                        return;
+                    }
+                    default -> System.out.println("Invalid choice!");
+                }
             }
         }
     }
@@ -93,8 +115,8 @@ public class MyContactsApp {
     }
 
     
-    //  Basic Auth
-    
+    // Basic Login
+   
 
     private static void basicLogin() {
 
@@ -120,7 +142,7 @@ public class MyContactsApp {
     }
 
     
-    //  Open Auth
+    // Open Login
     
 
     private static void openLogin() {
@@ -144,5 +166,70 @@ public class MyContactsApp {
         } else {
             System.out.println("Invalid Email or Password");
         }
+    }
+
+   
+    // Profile Management
+    
+
+    private static void profileManagement() {
+
+        User currentUser = SessionManager.getInstance().getCurrentUser();
+
+        ProfileManager manager = new ProfileManager();
+
+        System.out.println("\n=== Profile Management ===");
+        System.out.println("1. Update Name");
+        System.out.println("2. Update Email");
+        System.out.println("3. Change Password");
+        System.out.println("4. Update Preference");
+
+        int choice = sc.nextInt();
+        sc.nextLine();
+
+        switch (choice) {
+
+            case 1 -> {
+                System.out.print("Enter new name: ");
+                String newName = sc.nextLine();
+                manager.executeCommand(new UpdateName(currentUser, newName));
+            }
+
+            case 2 -> {
+                System.out.print("Enter new email: ");
+                String newEmail = sc.nextLine();
+                manager.executeCommand(new UpdateEmail(currentUser, newEmail));
+            }
+
+            case 3 -> {
+                System.out.print("Enter old password: ");
+                String oldPassword = sc.nextLine();
+
+                System.out.print("Enter new password: ");
+                String newPassword = sc.nextLine();
+
+                manager.executeCommand(
+                    new ChangePassword(currentUser, oldPassword, newPassword)
+                );
+            }
+
+            case 4 -> {
+                System.out.print("Enter preference: ");
+                String pref = sc.nextLine();
+                manager.executeCommand(new UpdatePreference(currentUser, pref));
+            }
+
+            default -> System.out.println("Invalid choice");
+        }
+    }
+
+    
+    // Logout
+    
+    private static void logout() {
+
+        SessionManager.getInstance().logout();
+
+        System.out.println("Logged out successfully!");
     }
 }

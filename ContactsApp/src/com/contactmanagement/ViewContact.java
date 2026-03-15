@@ -53,6 +53,8 @@ public class ViewContact {
 	        for (EmailAddress e : c.getEmailAddresses()) {
 	            System.out.println("   Email: " + e.getEmail());
 	        }
+	        
+	        System.out.println("   Tags: " + c.getTags());
 	    }
 	}
 }

@@ -16,6 +16,7 @@ public class SearchContact {
 	    System.out.println("1. Name");
 	    System.out.println("2. Phone");
 	    System.out.println("3. Email");
+	    System.out.println("4. Tag");
 
 	    int choice = sc.nextInt();
 	    sc.nextLine();
@@ -29,6 +30,7 @@ public class SearchContact {
 	        case 1 -> criteria = new NameCriteria();
 	        case 2 -> criteria = new PhoneCriteria();
 	        case 3 -> criteria = new EmailCriteria();
+	        case 4 -> criteria = new TagSearchCriteria();
 	        default -> {
 	            System.out.println("Invalid choice");
 	            return;

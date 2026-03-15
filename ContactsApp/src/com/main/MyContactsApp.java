@@ -1,8 +1,8 @@
 /**
  * @author Amit
- * @Version 11.0
+ * @Version 12.0
  * 
- * In this use case we create multiple tags which will be assigned to the contacts.
+ * In this use case we create multiple tags and assign tags to on or more contacts.
  */
 package com.main;
 
@@ -42,8 +42,10 @@ public class MyContactsApp {
             	System.out.println("8. Filter contacts.");
             	System.out.println("9. Create Tag");
             	System.out.println("10. View Tags");
-            	System.out.println("11. Logout");
-            	System.out.println("12. Exit");
+            	System.out.println("11. Add Tags");
+            	System.out.println("12. Remove Tags");
+            	System.out.println("13. Logout");
+            	System.out.println("14. Exit");
             }
 
             System.out.print("Enter choice: ");
@@ -74,11 +76,13 @@ public class MyContactsApp {
                     case 5 -> DeleteContact.deleteContact();
                     case 6 -> BulkOperation.bulkDeleteContacts();
                     case 7 -> SearchContact.searchContacts();
-                    case 8 -> FilterContact.filterByDateAdded();
+                    case 8 -> FilterContact.filterContacts();
                     case 9 -> tagOperation.createTag();
                     case 10 -> tagOperation.viewTags();
-                    case 11 -> logout();
-                    case 12 -> {
+                    case 11 -> tagOperation.applyTagsToContact();
+                    case 12 -> tagOperation.removeTagsFromContact();
+                    case 13 -> logout();
+                    case 14 -> {
                         System.out.println("Exiting application...");
                         return;
                     }

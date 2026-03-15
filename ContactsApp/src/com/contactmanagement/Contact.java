@@ -3,7 +3,8 @@ package com.contactmanagement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Set;
+import java.util.HashSet;
 import java.util.UUID;
 
 public abstract class Contact {
@@ -13,6 +14,7 @@ public abstract class Contact {
     private List<PhoneNumber> phoneNumbers;
     private List<EmailAddress> emailAddresses;
     private LocalDateTime createdAt;
+    private Set<Tag> tags = new HashSet<>();
 
     public Contact(String name, List<PhoneNumber> phoneNumbers,
             List<EmailAddress> emailAddresses) {
@@ -53,7 +55,9 @@ public abstract class Contact {
         return createdAt;
     }
     
-    
+    public Set<Tag> getTags() {
+        return new HashSet<>(tags);
+    }
 
     public void setName(String name) {
         if (name.isBlank()) {
@@ -70,8 +74,13 @@ public abstract class Contact {
         this.emailAddresses = new ArrayList<>(emailAddresses);
     }
     
+    public void addTag(Tag tag) {
+        tags.add(tag);
+    }
     
-    
+    public void removeTag(Tag tag) {
+        tags.remove(tag);
+    }
 
     public abstract void displayType();
 

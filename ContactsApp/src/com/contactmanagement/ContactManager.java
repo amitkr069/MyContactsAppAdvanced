@@ -55,4 +55,13 @@ public class ContactManager {
 
         return false;
     }
+    
+    public void bulkDelete(String username, List<Contact> contactsToDelete) {
+
+        List<Contact> contacts = userContacts.get(username);
+
+        if (contacts != null) {
+            contacts.removeIf(contactsToDelete::contains);
+        }
+    }
 }

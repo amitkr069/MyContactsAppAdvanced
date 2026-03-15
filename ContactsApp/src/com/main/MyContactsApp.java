@@ -1,9 +1,9 @@
 /**
  * @author Amit
- * @Version 7.0
+ * @Version 8.0
  * 
  * This use case contains contact management
- * Now user can also delete the contact.
+ * Now user can also delete the contact in bulk.
  */
 package com.main;
 
@@ -38,8 +38,9 @@ public class MyContactsApp {
             	System.out.println("3. View Contact");
             	System.out.println("4. Edit Contact");
             	System.out.println("5. Delete Contact");
-            	System.out.println("6. Logout");
-            	System.out.println("7. Exit");
+            	System.out.println("6. Bulk Delete Contacts");
+            	System.out.println("7. Logout");
+            	System.out.println("8. Exit");
             }
 
             System.out.print("Enter choice: ");
@@ -67,8 +68,9 @@ public class MyContactsApp {
                     case 3 -> ViewContact.viewContact();
                     case 4 -> EditContact.editContact();
                     case 5 -> DeleteContact.deleteContact();
-                    case 6 -> logout();
-                    case 7 -> {
+                    case 6 -> BulkOperation.bulkDeleteContacts();
+                    case 7 -> logout();
+                    case 8 -> {
                         System.out.println("Exiting application...");
                         return;
                     }

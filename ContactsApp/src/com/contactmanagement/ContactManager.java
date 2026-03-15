@@ -20,4 +20,15 @@ public class ContactManager {
     public List<Contact> getContacts(String username) {
         return userContacts.getOrDefault(username, new ArrayList<>());
     }
+    
+    public Contact findContact(String username, String name) {
+
+        for (Contact c : userContacts.getOrDefault(username, new ArrayList<>())) {
+            if (c.getName().equalsIgnoreCase(name)) {
+                return c;
+            }
+        }
+
+        return null;
+    }
 }

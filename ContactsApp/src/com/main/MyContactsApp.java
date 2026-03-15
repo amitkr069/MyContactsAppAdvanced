@@ -1,9 +1,9 @@
 /**
  * @author Amit
- * @Version 4.0
+ * @Version 5.0
  * 
  * This use case contains contact management
- * user creates contacts and manages it
+ * user creates contacts add added a feature to view contacts
  */
 package com.main;
 
@@ -35,8 +35,9 @@ public class MyContactsApp {
 
             	System.out.println("1. Profile Management");
             	System.out.println("2. Create Contact");
-            	System.out.println("3. Logout");
-            	System.out.println("4. Exit");
+            	System.out.println("3. View Contact");
+            	System.out.println("4. Logout");
+            	System.out.println("5. Exit");
             }
 
             System.out.print("Enter choice: ");
@@ -61,8 +62,9 @@ public class MyContactsApp {
                 switch (choice) {
                     case 1 -> profileManagement();
                     case 2 -> createContact();
-                    case 3 -> logout();
-                    case 4 -> {
+                    case 3 -> ViewContact.viewContact();
+                    case 4 -> logout();
+                    case 5 -> {
                         System.out.println("Exiting application...");
                         return;
                     }

@@ -41,4 +41,11 @@ public abstract class Contact {
     }
 
     public abstract void displayType();
+
+    @Override
+    public String toString() {
+        return "ID: " + contactId +
+               "\nName: " + name +
+               "\nCreated At: " + createdAt;
+    }
 }

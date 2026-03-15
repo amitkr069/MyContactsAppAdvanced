@@ -1,12 +1,14 @@
 package com.contactmanagement;
 
 import java.util.List;
-
+import java.util.Set;
 public class PersonContact extends Contact {
 
-    public PersonContact(String name, List<PhoneNumber> phones, List<EmailAddress> emails) {
-        super(name, phones, emails);
-    }
+	public PersonContact(String name, List<PhoneNumber> phoneNumbers,
+            List<EmailAddress> emailAddresses) {
+
+			super(name, phoneNumbers, emailAddresses);
+	}
 
     @Override
     public void displayType() {

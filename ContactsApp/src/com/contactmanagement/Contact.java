@@ -3,6 +3,7 @@ package com.contactmanagement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.UUID;
 
 public abstract class Contact {
@@ -13,12 +14,14 @@ public abstract class Contact {
     private List<EmailAddress> emailAddresses;
     private LocalDateTime createdAt;
 
-    public Contact(String name, List<PhoneNumber> phoneNumbers, List<EmailAddress> emailAddresses) {
-        this.contactId = UUID.randomUUID().toString();
-        this.name = name;
-        this.phoneNumbers = new ArrayList<>(phoneNumbers);
-        this.emailAddresses = new ArrayList<>(emailAddresses);
-        this.createdAt = LocalDateTime.now();
+    public Contact(String name, List<PhoneNumber> phoneNumbers,
+            List<EmailAddress> emailAddresses) {
+
+		 this.contactId = UUID.randomUUID().toString();
+		 this.name = name;
+		 this.phoneNumbers = new ArrayList<>(phoneNumbers);
+		 this.emailAddresses = new ArrayList<>(emailAddresses);
+		 this.createdAt = LocalDateTime.now();
     }
 
     // Copy Constructor
@@ -49,6 +52,8 @@ public abstract class Contact {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
+    
+    
 
     public void setName(String name) {
         if (name.isBlank()) {
@@ -64,6 +69,9 @@ public abstract class Contact {
     public void setEmailAddresses(List<EmailAddress> emailAddresses) {
         this.emailAddresses = new ArrayList<>(emailAddresses);
     }
+    
+    
+    
 
     public abstract void displayType();
 

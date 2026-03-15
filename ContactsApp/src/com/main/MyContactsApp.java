@@ -1,9 +1,8 @@
 /**
  * @author Amit
- * @Version 10.0
+ * @Version 11.0
  * 
- * This use case contains contact management
- * Now user can filter contacts based on the date added.
+ * In this use case we create multiple tags which will be assigned to the contacts.
  */
 package com.main;
 
@@ -41,8 +40,10 @@ public class MyContactsApp {
             	System.out.println("6. Bulk Delete Contacts");
             	System.out.println("7. Search for contacts");
             	System.out.println("8. Filter contacts.");
-            	System.out.println("9. Logout");
-            	System.out.println("10. Exit");
+            	System.out.println("9. Create Tag");
+            	System.out.println("10. View Tags");
+            	System.out.println("11. Logout");
+            	System.out.println("12. Exit");
             }
 
             System.out.print("Enter choice: ");
@@ -63,6 +64,7 @@ public class MyContactsApp {
                 }
 
             } else {
+            	TagOperation tagOperation = new TagOperation();
 
                 switch (choice) {
                     case 1 -> profileManagement();
@@ -73,8 +75,10 @@ public class MyContactsApp {
                     case 6 -> BulkOperation.bulkDeleteContacts();
                     case 7 -> SearchContact.searchContacts();
                     case 8 -> FilterContact.filterByDateAdded();
-                    case 9 -> logout();
-                    case 10 -> {
+                    case 9 -> tagOperation.createTag();
+                    case 10 -> tagOperation.viewTags();
+                    case 11 -> logout();
+                    case 12 -> {
                         System.out.println("Exiting application...");
                         return;
                     }

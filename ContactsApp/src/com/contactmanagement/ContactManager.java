@@ -43,4 +43,16 @@ public class ContactManager {
             contacts.set(index, newContact);
         }
     }
+    
+    // delete cotact
+    public boolean deleteContact(String username, Contact contact) {
+
+        List<Contact> contacts = userContacts.get(username);
+
+        if (contacts != null) {
+            return contacts.remove(contact);
+        }
+
+        return false;
+    }
 }

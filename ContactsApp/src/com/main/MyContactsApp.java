@@ -1,9 +1,9 @@
 /**
  * @author Amit
- * @Version 5.0
+ * @Version 7.0
  * 
  * This use case contains contact management
- * user creates contacts add added a feature to view contacts
+ * Now user can also delete the contact.
  */
 package com.main;
 
@@ -37,8 +37,9 @@ public class MyContactsApp {
             	System.out.println("2. Create Contact");
             	System.out.println("3. View Contact");
             	System.out.println("4. Edit Contact");
-            	System.out.println("5. Logout");
-            	System.out.println("6. Exit");
+            	System.out.println("5. Delete Contact");
+            	System.out.println("6. Logout");
+            	System.out.println("7. Exit");
             }
 
             System.out.print("Enter choice: ");
@@ -65,8 +66,9 @@ public class MyContactsApp {
                     case 2 -> createContact();
                     case 3 -> ViewContact.viewContact();
                     case 4 -> EditContact.editContact();
-                    case 5 -> logout();
-                    case 6 -> {
+                    case 5 -> DeleteContact.deleteContact();
+                    case 6 -> logout();
+                    case 7 -> {
                         System.out.println("Exiting application...");
                         return;
                     }

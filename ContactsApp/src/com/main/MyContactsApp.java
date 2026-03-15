@@ -1,16 +1,18 @@
 /**
  * @author Amit
- * @Version 3.0
+ * @Version 4.0
  * 
- * This use case contains user profile management
- * it has update name, update email, update password
+ * This use case contains contact management
+ * user creates contacts and manages it
  */
 package com.main;
 
 import com.usermanagement.*;
+import com.contactmanagement.*;
 
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.*;
 
 public class MyContactsApp {
 
@@ -31,9 +33,10 @@ public class MyContactsApp {
 
             } else {
 
-                System.out.println("1. Profile Management");
-                System.out.println("2. Logout");
-                System.out.println("3. Exit");
+            	System.out.println("1. Profile Management");
+            	System.out.println("2. Create Contact");
+            	System.out.println("3. Logout");
+            	System.out.println("4. Exit");
             }
 
             System.out.print("Enter choice: ");
@@ -57,8 +60,9 @@ public class MyContactsApp {
 
                 switch (choice) {
                     case 1 -> profileManagement();
-                    case 2 -> logout();
-                    case 3 -> {
+                    case 2 -> createContact();
+                    case 3 -> logout();
+                    case 4 -> {
                         System.out.println("Exiting application...");
                         return;
                     }
@@ -221,6 +225,50 @@ public class MyContactsApp {
 
             default -> System.out.println("Invalid choice");
         }
+    }
+    
+    private static void createContact() {
+
+        User currentUser = SessionManager.getInstance().getCurrentUser();
+
+        if (currentUser == null) {
+            System.out.println("Please login first");
+            return;
+        }
+
+        System.out.print("Enter Contact Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Phone Number: ");
+        String phone = sc.nextLine();
+
+        System.out.print("Enter Email: ");
+        String email = sc.nextLine();
+
+        System.out.print("Enter Type (person/organization): ");
+        String type = sc.nextLine();
+
+        List<PhoneNumber> phones = new java.util.ArrayList<>();
+        try {
+            phones.add(new PhoneNumber(phone));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+//        phones.add(new PhoneNumber(phone));
+
+        List<EmailAddress> emails = new java.util.ArrayList<>();
+        emails.add(new EmailAddress(email));
+
+        Contact contact = new ContactBuilder()
+                .setName(name)
+                .setPhones(phones)
+                .setEmails(emails)
+                .build(type);
+
+        ContactManager manager = new ContactManager();
+
+        manager.addContact(currentUser.getUsername(), contact);
     }
 
     

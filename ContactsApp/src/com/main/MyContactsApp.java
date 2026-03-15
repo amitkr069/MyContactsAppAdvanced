@@ -1,9 +1,9 @@
 /**
  * @author Amit
- * @Version 9.0
+ * @Version 10.0
  * 
  * This use case contains contact management
- * Now user can search for contacts based on name, email and phone number.
+ * Now user can filter contacts based on the date added.
  */
 package com.main;
 
@@ -40,8 +40,9 @@ public class MyContactsApp {
             	System.out.println("5. Delete Contact");
             	System.out.println("6. Bulk Delete Contacts");
             	System.out.println("7. Search for contacts");
-            	System.out.println("8. Logout");
-            	System.out.println("9. Exit");
+            	System.out.println("8. Filter contacts.");
+            	System.out.println("9. Logout");
+            	System.out.println("10. Exit");
             }
 
             System.out.print("Enter choice: ");
@@ -71,8 +72,9 @@ public class MyContactsApp {
                     case 5 -> DeleteContact.deleteContact();
                     case 6 -> BulkOperation.bulkDeleteContacts();
                     case 7 -> SearchContact.searchContacts();
-                    case 8 -> logout();
-                    case 9 -> {
+                    case 8 -> FilterContact.filterByDateAdded();
+                    case 9 -> logout();
+                    case 10 -> {
                         System.out.println("Exiting application...");
                         return;
                     }

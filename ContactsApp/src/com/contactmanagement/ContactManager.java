@@ -1,5 +1,6 @@
 package com.contactmanagement;
 
+import com.searchfilter.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,5 +64,13 @@ public class ContactManager {
         if (contacts != null) {
             contacts.removeIf(contactsToDelete::contains);
         }
+    }
+    
+    public List<Contact> searchContacts(String username, SearchCriteria criteria, String keyword) {
+
+        return userContacts.getOrDefault(username, new ArrayList<>())
+                .stream()
+                .filter(c -> criteria.matches(c, keyword))
+                .toList();
     }
 }
